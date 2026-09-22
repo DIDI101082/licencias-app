@@ -1,0 +1,7 @@
+0000000000000000000000000000000000000000 382e587178e68c76c3475cbbe20d91dac9177b44 dev <dev@local> 1790089824 +0000	commit (initial): Proyecto inicial: control de licencias de software
+382e587178e68c76c3475cbbe20d91dac9177b44 0000000000000000000000000000000000000000 root <root@vm.(none)> 1790089824 +0000	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 382e587178e68c76c3475cbbe20d91dac9177b44 root <root@vm.(none)> 1790089824 +0000	Branch: renamed refs/heads/master to refs/heads/main
+382e587178e68c76c3475cbbe20d91dac9177b44 d2df3fc58e77cf583a53f2ca095bceb576e3cc7b dev <dev@local> 1790100551 +0000	commit: Aplicar identidad visual de Accusys (color, tipografía, marca)
+d2df3fc58e77cf583a53f2ca095bceb576e3cc7b a7cdf521d19cb4629a1bc81a4e69d532bddab535 dev <dev@local> 1790101718 +0000	commit: Reemplazar login por SSO con Microsoft Entra ID (Azure)
+a7cdf521d19cb4629a1bc81a4e69d532bddab535 39f475f1dbfa9f8e8278b0c518ac0bf45aaaebee dev <dev@local> 1790102389 +0000	commit: Nuevo sistema de roles: administrador / lectura_escritura / solo_lectura
+39f475f1dbfa9f8e8278b0c518ac0bf45aaaebee df1ac8a8163610dc048da1f1e9a17b5abbe6785a dev <dev@local> 1790103075 +0000	commit: Agregar pantalla de Usuarios para asignar roles sin SQL

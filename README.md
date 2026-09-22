@@ -22,10 +22,17 @@ en línea con tus otros proyectos.
 
 ## Roles
 
-- **rrhh**: acceso total a todo (empleados, licencias, asignaciones de
-  cualquier área).
-- **manager**: solo ve y gestiona empleados/asignaciones de **su propia
-  área**; el catálogo de licencias lo ve en modo lectura.
+- **administrador**: acceso total a todo (empleados, licencias,
+  asignaciones de cualquier área).
+- **lectura_escritura**: ve y gestiona empleados/asignaciones de **su
+  propia área**; el catálogo de licencias lo ve en modo lectura.
+- **solo_lectura**: ve **todo** el sistema (todas las áreas), en modo
+  lectura únicamente — pensado para que cualquier persona de la empresa
+  pueda entrar a consultar sin poder modificar nada.
+
+Las cuentas nuevas quedan en **solo_lectura** por defecto (el modo más
+seguro). Un administrador sube el rol manualmente desde Supabase cuando
+corresponde.
 
 Los roles y permisos están reforzados con **Row Level Security** en la base
 (`supabase/schema.sql`), no solo en el frontend.
@@ -61,18 +68,24 @@ npm run dev
 Abrí `http://localhost:3000`, registrate con tu email de la empresa. Vas a
 entrar como "manager" sin área.
 
-### 4. Convertirte en RR.HH. (admin)
+### 4. Convertirte en administrador
 
 En el SQL Editor de Supabase, corré (una sola vez, con tu email):
 
 ```sql
-update perfiles set rol = 'rrhh', area = null where email = 'tu-email@empresa.com';
+update perfiles set rol = 'administrador', area = null where email = 'tu-email@empresa.com';
 ```
 
-A partir de ahí vas a tener acceso total. Para dar de alta un manager,
-actualizá su fila en `perfiles` con `rol = 'manager'` y el `area` que le
-corresponda (tiene que coincidir con el campo `area` que uses en
-`empleados`).
+A partir de ahí vas a tener acceso total. Para dar de alta a alguien con
+lectura y escritura en un área, actualizá su fila en `perfiles`:
+
+```sql
+update perfiles set rol = 'lectura_escritura', area = 'Nombre del área' where email = 'alguien@empresa.com';
+```
+
+(el `area` tiene que coincidir con el campo `area` que uses en
+`empleados`). Cualquier otra cuenta que se registre queda en
+`solo_lectura` automáticamente, sin que tengas que hacer nada.
 
 ### 5. Deploy a Vercel
 

@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
-import { Fraunces, Source_Sans_3 } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import { getPerfil } from "@/lib/supabase/server";
 import Nav from "@/components/Nav";
 
-const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces" });
-const sourceSans = Source_Sans_3({ subsets: ["latin"], variable: "--font-source-sans" });
+const display = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-display",
+});
+const body = Inter({ subsets: ["latin"], variable: "--font-body" });
 
 export const metadata: Metadata = {
-  title: "Control de Licencias",
-  description: "Gestión de licencias de software de la empresa",
+  title: "Licencias | Accusys",
+  description: "Control de licencias de software de la empresa",
 };
 
 export default async function RootLayout({
@@ -21,7 +25,7 @@ export default async function RootLayout({
 
   return (
     <html lang="es">
-      <body className={`${fraunces.variable} ${sourceSans.variable} font-sans`}>
+      <body className={`${display.variable} ${body.variable} font-sans`}>
         {perfil && <Nav nombre={perfil.nombre} rol={perfil.rol} />}
         <main className="mx-auto max-w-6xl px-6 py-8">{children}</main>
       </body>

@@ -134,9 +134,11 @@ create policy "asignaciones_manager_update" on asignaciones for update
 -- (por defecto como 'manager'; RRHH debe promover manualmente al primer admin)
 -- ==========================================================
 create or replace function crear_perfil_nuevo_usuario()
-returns trigger language plpgsql security definer as $$
+returns trigger language plpgsql security definer
+set search_path = public
+as $$
 begin
-  insert into perfiles (id, nombre, email, rol)
+  insert into public.perfiles (id, nombre, email, rol)
   values (new.id, coalesce(new.raw_user_meta_data->>'nombre', new.email), new.email, 'manager');
   return new;
 end;

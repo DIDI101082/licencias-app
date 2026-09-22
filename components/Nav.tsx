@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import Mark from "./Mark";
 
 const links = [
   { href: "/", label: "Panel" },
@@ -27,7 +28,15 @@ export default function Nav({ nombre, rol }: { nombre: string; rol: string }) {
     <header className="border-b border-black/[0.06] bg-white">
       <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-8">
-          <span className="font-display text-lg text-ink">Licencias</span>
+          <span className="flex items-center gap-2">
+            <Mark className="h-5 w-5" />
+            <span className="font-display font-bold text-lg text-ink tracking-tight">
+              Licencias
+            </span>
+            <span className="hidden sm:inline text-xs text-ink/40 font-medium border-l border-black/10 pl-2 ml-1">
+              Accusys
+            </span>
+          </span>
           <nav className="flex gap-1">
             {links.map((l) => (
               <Link

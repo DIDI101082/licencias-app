@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import Mark from "@/components/Mark";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -35,11 +36,16 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#F7F6F3] px-6">
+    <div className="min-h-screen flex items-center justify-center bg-[#F5F7FB] px-6">
       <div className="w-full max-w-sm">
-        <h1 className="font-display text-3xl text-ink mb-1">Licencias</h1>
+        <div className="flex items-center gap-2 mb-1">
+          <Mark className="h-7 w-7" />
+          <h1 className="font-display font-bold text-3xl text-ink tracking-tight">
+            Licencias
+          </h1>
+        </div>
         <p className="text-ink/60 text-sm mb-8">
-          Control de licencias de software de la empresa
+          Control de licencias de software · Accusys
         </p>
 
         <form onSubmit={onSubmit} className="card p-6 space-y-4">
